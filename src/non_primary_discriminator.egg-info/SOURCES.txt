@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+src/non_primary_discriminator/__init__.py
+src/non_primary_discriminator/audio.py
+src/non_primary_discriminator/config.py
+src/non_primary_discriminator/dataset.py
+src/non_primary_discriminator/model.py
+src/non_primary_discriminator/predict.py
+src/non_primary_discriminator/train.py
+src/non_primary_discriminator.egg-info/PKG-INFO
+src/non_primary_discriminator.egg-info/SOURCES.txt
+src/non_primary_discriminator.egg-info/dependency_links.txt
+src/non_primary_discriminator.egg-info/entry_points.txt
+src/non_primary_discriminator.egg-info/requires.txt
+src/non_primary_discriminator.egg-info/top_level.txt

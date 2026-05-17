@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "non-primary-discriminator"
+version = "0.1.0"
+description = "Standalone Transformer discriminator that predicts the non-primary energy ratio of a mixed audio segment."
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "torch>=2.2",
+]
+
+[project.scripts]
+dis-train = "non_primary_discriminator.train:main"
+dis-predict = "non_primary_discriminator.predict:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

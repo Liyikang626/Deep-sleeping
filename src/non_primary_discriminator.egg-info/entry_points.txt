@@ -1,0 +1,3 @@
+[console_scripts]
+dis-predict = non_primary_discriminator.predict:main
+dis-train = non_primary_discriminator.train:main

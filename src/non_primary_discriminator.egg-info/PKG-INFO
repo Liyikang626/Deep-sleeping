@@ -1,0 +1,68 @@
+Metadata-Version: 2.4
+Name: non-primary-discriminator
+Version: 0.1.0
+Summary: Standalone Transformer discriminator that predicts the non-primary energy ratio of a mixed audio segment.
+Requires-Python: <3.13,>=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: torch>=2.2
+
+# Non-Primary Energy Ratio Discriminator
+
+This project trains a simple Transformer regressor on mixed music clips.
+
+Given one mixture waveform, the model predicts:
+
+```text
+non_primary_ratio = (total_stem_energy - primary_stem_energy) / total_stem_energy
+```
+
+Here, the "primary" stem is defined as the stem with the largest energy inside the current training segment.
+
+## Dataset
+
+By default, the code points at:
+
+```text
+../deep_sleeping/dataset generator/generated
+```
+
+Each project folder is expected to contain:
+
+- `mixture.wav`
+- `stems/*.wav`
+- `metadata.json`
+
+## Install
+
+```powershell
+cd "C:\Users\fison\Desktop\class\DL\discriminator\dis"
+uv sync --python 3.11
+```
+
+## Train
+
+```powershell
+uv run dis-train --epochs 20 --batch-size 8 --segment-seconds 6
+```
+
+To override the dataset path:
+
+```powershell
+uv run dis-train --dataset-root "C:\path\to\generated"
+```
+
+## Predict
+
+```powershell
+uv run dis-predict --checkpoint .\runs\best.pt --mixture "C:\path\to\mixture.wav"
+```
+
+## AutoDL notes
+
+On AutoDL, upload the `dis/` folder and point `--dataset-root` at the generated dataset on the server:
+
+```bash
+cd /root/autodl-tmp/dis
+python -m pip install -e .
+dis-train --dataset-root /root/autodl-tmp/generated --device cuda
+```
